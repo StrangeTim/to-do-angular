@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
           <td></td>
         </tr>
       </table-->
-      <h3 *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
+      <h3 (click)="clickEvent()" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
     </div>
   `
 })
@@ -33,7 +33,10 @@ export class AppComponent {
     new Task("3: ???", 3),
     new Task("4: PROFIT", 4)
   ];
-
+  clickEvent( clickedTask: Task) {
+    if (clickedTask.done===true) alert("OMG you just CLICKED on a task that is done!");
+    else alert("This task needs to be done. Get to work!");
+  }
 }
 
 export class Task {
