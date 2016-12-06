@@ -18,7 +18,12 @@ import { Component } from '@angular/core';
           <td></td>
         </tr>
       </table-->
-      <h3 (click)="clickEvent()" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
+      <h3 (click)="clickEvent(currentTask)" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
+      <div class="editBlock">
+        <h1>Edit Task</h1>
+        <p>Description: <input [(ngModel)]="selectedTask.description"</input></p>
+        <p>Task ID: <input [(ngModel)]="selectedTask.id"</input></p>
+      </div>
     </div>
   `
 })
@@ -33,9 +38,11 @@ export class AppComponent {
     new Task("3: ???", 3),
     new Task("4: PROFIT", 4)
   ];
+  selectedTask: Task = this.tasks[1];
   clickEvent( clickedTask: Task) {
-    if (clickedTask.done===true) alert("OMG you just CLICKED on a task that is done!");
-    else alert("This task needs to be done. Get to work!");
+    //if (clickedTask.done===true) alert("OMG you just CLICKED on a task that is done!");
+    //else alert("This task needs to be done. Get to work!");
+    this.selectedTask = clickedTask;
   }
 }
 
