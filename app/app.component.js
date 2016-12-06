@@ -19,15 +19,18 @@ var AppComponent = (function () {
             new Task("3: ???", 3),
             new Task("4: PROFIT", 4)
         ];
-        this.selectedTask = this.tasks[1];
+        this.selectedTask = null;
     }
-    AppComponent.prototype.clickEvent = function (clickedTask) {
+    AppComponent.prototype.showDetails = function (clickedTask) {
         this.selectedTask = clickedTask;
+    };
+    AppComponent.prototype.doneEdit = function () {
+        this.selectedTask = null;
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class=\"container\">\n      <h1>To-Do List Angular</h1>\n      <!--table>\n        <th>\n          <td>Task Type</td>\n          <td>Task Description</td>\n          <td>Person</td>\n          <td>Priority</td>\n          <td>Due</td>\n        </th>\n        <tr>\n          <td></td>\n        </tr>\n      </table-->\n      <h3 (click)=\"clickEvent(currentTask)\" *ngFor=\"let currentTask of tasks\">{{ currentTask.description }}</h3>\n      <div class=\"editBlock\">\n        <h1>Edit Task</h1>\n        <p>Description: <input [(ngModel)]=\"selectedTask.description\"></p>\n        <p>Task ID: <input [(ngModel)]=\"selectedTask.id\"></p>\n      </div>\n    </div>\n  "
+            template: "\n    <div class=\"container\">\n      <h1>To-Do List Angular</h1>\n      <!--table>\n        <th>\n          <td>Task Type</td>\n          <td>Task Description</td>\n          <td>Person</td>\n          <td>Priority</td>\n          <td>Due</td>\n        </th>\n        <tr>\n          <td></td>\n        </tr>\n      </table-->\n      <div class=\"taskDisplay\" *ngFor=\"let currentTask of tasks\">\n        <h3>{{ currentTask.description }}</h3>\n        <button (click)=\"showDetails(currentTask)\">Edit</button>\n      </div>\n      <div class=\"editBlock\" *ngIf=\"selectedTask\">\n        <h1>Edit Task</h1>\n        <p>Description: <input [(ngModel)]=\"selectedTask.description\"></p>\n        <p>Task ID: <input [(ngModel)]=\"selectedTask.id\"></p>\n        <button (click)=\"doneEdit()\">Done Editing</button>\n      </div>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

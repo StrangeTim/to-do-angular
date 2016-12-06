@@ -18,11 +18,15 @@ import { Component } from '@angular/core';
           <td></td>
         </tr>
       </table-->
-      <h3 (click)="clickEvent(currentTask)" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
-      <div class="editBlock">
+      <div class="taskDisplay" *ngFor="let currentTask of tasks">
+        <h3>{{ currentTask.description }}</h3>
+        <button (click)="showDetails(currentTask)">Edit</button>
+      </div>
+      <div class="editBlock" *ngIf="selectedTask">
         <h1>Edit Task</h1>
         <p>Description: <input [(ngModel)]="selectedTask.description"></p>
         <p>Task ID: <input [(ngModel)]="selectedTask.id"></p>
+        <button (click)="doneEdit()">Done Editing</button>
       </div>
     </div>
   `
@@ -38,9 +42,12 @@ export class AppComponent {
     new Task("3: ???", 3),
     new Task("4: PROFIT", 4)
   ];
-  selectedTask: Task = this.tasks[1];
-  clickEvent( clickedTask: Task) {
+  selectedTask: Task = null;
+  showDetails( clickedTask: Task) {
     this.selectedTask = clickedTask;
+  }
+  doneEdit() {
+    this.selectedTask = null;
   }
 }
 
