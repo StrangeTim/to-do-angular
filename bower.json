@@ -1,0 +1,23 @@
+{
+  "name": "angular2-skeleton",
+  "description": "beginning angular",
+  "main": "index.html",
+  "authors": [
+    "StrangeTim <strang3tim@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular"
+  ],
+  "homepage": "n/a",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
