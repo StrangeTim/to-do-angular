@@ -9,9 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-// THIS IS THE COMPONENT ANNOTATION SECTION
-var AppComponent = (function () {
-    function AppComponent() {
+var TasksListComponent = (function () {
+    function TasksListComponent() {
         this.tasks = [
             new Task("Create To-Do List App.", 0),
             new Task("1: Learn Angular", 1),
@@ -21,22 +20,22 @@ var AppComponent = (function () {
         ];
         this.selectedTask = null;
     }
-    AppComponent.prototype.showDetails = function (clickedTask) {
+    TasksListComponent.prototype.showDetails = function (clickedTask) {
         this.selectedTask = clickedTask;
     };
-    AppComponent.prototype.doneEdit = function () {
+    TasksListComponent.prototype.doneEdit = function () {
         this.selectedTask = null;
     };
-    AppComponent = __decorate([
+    TasksListComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <div class=\"container\">\n      <tasks></tasks>\n    </div>\n  "
+            selector: 'tasks',
+            template: "\n  <h1>To-Do List Angular</h1>\n  <!--table>\n    <th>\n      <td>Task Type</td>\n      <td>Task Description</td>\n      <td>Person</td>\n      <td>Priority</td>\n      <td>Due</td>\n    </th>\n    <tr>\n      <td></td>\n    </tr>\n  </table-->\n  <div class=\"taskDisplay\" *ngFor=\"let currentTask of tasks\">\n    <h3>{{ currentTask.description }}</h3>\n    <button (click)=\"showDetails(currentTask)\">Edit</button>\n  </div>\n  <div class=\"editBlock\" *ngIf=\"selectedTask\">\n    <h1>Edit Task</h1>\n    <p>Description: <input [(ngModel)]=\"selectedTask.description\"></p>\n    <p>Task ID: <input [(ngModel)]=\"selectedTask.id\"></p>\n    <button (click)=\"doneEdit()\">Done Editing</button>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], TasksListComponent);
+    return TasksListComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.TasksListComponent = TasksListComponent;
 var Task = (function () {
     function Task(description, id) {
         this.description = description;
@@ -46,4 +45,4 @@ var Task = (function () {
     return Task;
 }());
 exports.Task = Task;
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=tasks-list.component.js.map
