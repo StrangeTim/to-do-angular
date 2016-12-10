@@ -12,12 +12,11 @@ import { Task } from './task.model';
         > <!-- childTaskList is the input to the tasks list component -->
           <!-- clickSender is the expected OUTPUT from the child component -->
       </task-list>
-    </div>
-    <div class="editBlock" *ngIf="selectedTask">
-      <h1>Edit Task</h1>
-      <p>Description: <input [(ngModel)]="selectedTask.description"></p>
-      <p>Task ID: <input [(ngModel)]="selectedTask.id"></p>
-      <button (click)="doneEdit()">Done Editing</button>
+      <edit-task
+        [childSelectedTask]="selectedTask"
+        (doneEditClicked)="doneEdit()"
+        >
+      </edit-task>
     </div>
   `
 })
