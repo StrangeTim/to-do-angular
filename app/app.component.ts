@@ -17,6 +17,9 @@ import { Task } from './task.model';
         (doneEditClicked)="doneEdit()"
         >
       </edit-task>
+      <new-task
+        (newTaskSender)="addTask($event)"
+      ></new-task>
     </div>
   `
 })
@@ -37,5 +40,8 @@ export class AppComponent {
   }
   doneEdit() {
     this.selectedTask = null;
+  }
+  addTask(newTaskFromChild: Task) {
+    this.masterTaskList.push(newTaskFromChild);
   }
 }

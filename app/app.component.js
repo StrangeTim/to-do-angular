@@ -28,10 +28,13 @@ var AppComponent = (function () {
     AppComponent.prototype.doneEdit = function () {
         this.selectedTask = null;
     };
+    AppComponent.prototype.addTask = function (newTaskFromChild) {
+        this.masterTaskList.push(newTaskFromChild);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class=\"container\">\n      <task-list\n        [childTaskList]=\"masterTaskList\"\n        (clickSender)=\"showDetails($event)\"\n        > <!-- childTaskList is the input to the tasks list component -->\n          <!-- clickSender is the expected OUTPUT from the child component -->\n      </task-list>\n      <edit-task\n        [childSelectedTask]=\"selectedTask\"\n        (doneEditClicked)=\"doneEdit()\"\n        >\n      </edit-task>\n    </div>\n  "
+            template: "\n    <div class=\"container\">\n      <task-list\n        [childTaskList]=\"masterTaskList\"\n        (clickSender)=\"showDetails($event)\"\n        > <!-- childTaskList is the input to the tasks list component -->\n          <!-- clickSender is the expected OUTPUT from the child component -->\n      </task-list>\n      <edit-task\n        [childSelectedTask]=\"selectedTask\"\n        (doneEditClicked)=\"doneEdit()\"\n        >\n      </edit-task>\n      <new-task\n        (newTaskSender)=\"addTask($event)\"\n      ></new-task>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
