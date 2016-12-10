@@ -9,15 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var task_model_1 = require('./task.model');
 // THIS IS THE COMPONENT ANNOTATION SECTION
 var AppComponent = (function () {
     function AppComponent() {
-        this.tasks = [
-            new Task("Create To-Do List App.", 0),
-            new Task("1: Learn Angular", 1),
-            new Task("2: Combine Angular with Rails", 2),
-            new Task("3: ???", 3),
-            new Task("4: PROFIT", 4)
+        this.masterTaskList = [
+            new task_model_1.Task("Create To-Do List App.", 0),
+            new task_model_1.Task("1: Learn Angular", 1),
+            new task_model_1.Task("2: Combine Angular with Rails", 2),
+            new task_model_1.Task("3: ???", 3),
+            new task_model_1.Task("4: PROFIT", 4)
         ];
         this.selectedTask = null;
     }
@@ -30,20 +31,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class=\"container\">\n      <tasks></tasks>\n    </div>\n  "
+            template: "\n    <div class=\"container\">\n      <task-list\n        [childTaskList]=\"masterTaskList\"\n        (clickSender)=\"showDetails($event)\"\n        > <!-- childTaskList is the input to the tasks list component -->\n          <!-- clickSender is the expected OUTPUT from the child component -->\n      </task-list>\n    </div>\n    <div class=\"editBlock\" *ngIf=\"selectedTask\">\n      <h1>Edit Task</h1>\n      <p>Description: <input [(ngModel)]=\"selectedTask.description\"></p>\n      <p>Task ID: <input [(ngModel)]=\"selectedTask.id\"></p>\n      <button (click)=\"doneEdit()\">Done Editing</button>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-var Task = (function () {
-    function Task(description, id) {
-        this.description = description;
-        this.id = id;
-        this.done = false;
-    }
-    return Task;
-}());
-exports.Task = Task;
 //# sourceMappingURL=app.component.js.map
