@@ -17,7 +17,12 @@ import { Task } from './task.model';
       <td></td>
     </tr>
   </table-->
-  <div class="taskDisplay" *ngFor="let currentTask of childTaskList">
+  <select (change)="onSortChange($event.target.value)">
+    <option value="all" selected="selected">Show All Tasks</option>
+    <option value="isDone">Show Done Tasks</option>
+    <option value="notDone">Show Incomplete Tasks</option>
+  </select>
+  <div class="taskDisplay" *ngFor="let currentTask of childTaskList | sorting:selectedSort">
     <h3>{{ currentTask.description }}</h3>
     <button (click)="editClicked(currentTask)">Edit</button>
   </div>
@@ -29,7 +34,14 @@ import { Task } from './task.model';
 export class TasksListComponent {
   @Input() childTaskList: Task[];
   @Output() clickSender = new EventEmitter();
+
+  public selectedSort: string ="all";
+  onSortChange(optionFromMenu) {
+    this.selectedSort = optionFromMenu;
+  }
+  
   editClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
   }
+
 }

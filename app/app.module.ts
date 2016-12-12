@@ -5,6 +5,7 @@ import { AppComponent }       from './app.component';
 import { TasksListComponent } from './tasks-list.component';
 import { EditTaskComponent }  from './edit-task.component';
 import { NewTaskComponent }   from './new-task.component';
+import { SortingPipe }        from './sorting.pipe';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -13,6 +14,7 @@ import { NewTaskComponent }   from './new-task.component';
     TasksListComponent,
     EditTaskComponent,
     NewTaskComponent,
+    SortingPipe,
   ],
   bootstrap:    [AppComponent]
 })
